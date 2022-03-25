@@ -9,10 +9,6 @@ class PublishedManager(models.Manager):
         return super(PublishedManager, self).get_queryset().filter(status='published')
 
 class Post(models.Model):
-
-    objects = models.Manager()  # The default manager.
-    published = PublishedManager() # Our custom manager
-    
     STATUS_CHOICES = (
         ('draft', 'Draft'),
         ('published', 'Published'),
@@ -32,3 +28,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    objects = models.Manager()  # The default manager.
+    published = PublishedManager() # Our custom manager
